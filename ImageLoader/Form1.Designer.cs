@@ -40,13 +40,17 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btSomarImg = new System.Windows.Forms.Button();
-            this.txSumManual = new System.Windows.Forms.TextBox();
             this.btSomarManual = new System.Windows.Forms.Button();
             this.btSubImg = new System.Windows.Forms.Button();
+            this.txSumManual = new System.Windows.Forms.NumericUpDown();
+            this.txSubtManual = new System.Windows.Forms.NumericUpDown();
+            this.btSubtManual = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txSumManual)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txSubtManual)).BeginInit();
             this.SuspendLayout();
             // 
             // btCarregarImagem
@@ -124,16 +128,9 @@
             this.btSomarImg.UseVisualStyleBackColor = true;
             this.btSomarImg.Click += new System.EventHandler(this.btSomarImg_Click);
             // 
-            // txSumManual
-            // 
-            this.txSumManual.Location = new System.Drawing.Point(639, 122);
-            this.txSumManual.Name = "txSumManual";
-            this.txSumManual.Size = new System.Drawing.Size(86, 20);
-            this.txSumManual.TabIndex = 9;
-            // 
             // btSomarManual
             // 
-            this.btSomarManual.Location = new System.Drawing.Point(547, 116);
+            this.btSomarManual.Location = new System.Drawing.Point(547, 84);
             this.btSomarManual.Name = "btSomarManual";
             this.btSomarManual.Size = new System.Drawing.Size(86, 30);
             this.btSomarManual.TabIndex = 10;
@@ -151,14 +148,52 @@
             this.btSubImg.UseVisualStyleBackColor = true;
             this.btSubImg.Click += new System.EventHandler(this.btSubImg_Click);
             // 
+            // txSumManual
+            // 
+            this.txSumManual.Location = new System.Drawing.Point(639, 91);
+            this.txSumManual.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.txSumManual.Name = "txSumManual";
+            this.txSumManual.Size = new System.Drawing.Size(86, 20);
+            this.txSumManual.TabIndex = 12;
+            this.txSumManual.UseWaitCursor = true;
+            // 
+            // txSubtManual
+            // 
+            this.txSubtManual.Location = new System.Drawing.Point(639, 127);
+            this.txSubtManual.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.txSubtManual.Name = "txSubtManual";
+            this.txSubtManual.Size = new System.Drawing.Size(86, 20);
+            this.txSubtManual.TabIndex = 13;
+            this.txSubtManual.UseWaitCursor = true;
+            // 
+            // btSubtManual
+            // 
+            this.btSubtManual.Location = new System.Drawing.Point(547, 120);
+            this.btSubtManual.Name = "btSubtManual";
+            this.btSubtManual.Size = new System.Drawing.Size(86, 30);
+            this.btSubtManual.TabIndex = 14;
+            this.btSubtManual.Text = "SUBT MAN.";
+            this.btSubtManual.UseVisualStyleBackColor = true;
+            this.btSubtManual.Click += new System.EventHandler(this.btSubtManual_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1320, 584);
+            this.Controls.Add(this.btSubtManual);
+            this.Controls.Add(this.txSubtManual);
+            this.Controls.Add(this.txSumManual);
             this.Controls.Add(this.btSubImg);
             this.Controls.Add(this.btSomarManual);
-            this.Controls.Add(this.txSumManual);
             this.Controls.Add(this.btSomarImg);
             this.Controls.Add(this.btCarregarImagemB);
             this.Controls.Add(this.pictureBox3);
@@ -172,8 +207,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txSumManual)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txSubtManual)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -190,9 +226,11 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btSomarImg;
-        private System.Windows.Forms.TextBox txSumManual;
         private System.Windows.Forms.Button btSomarManual;
         private System.Windows.Forms.Button btSubImg;
+        private System.Windows.Forms.NumericUpDown txSumManual;
+        private System.Windows.Forms.NumericUpDown txSubtManual;
+        private System.Windows.Forms.Button btSubtManual;
     }
 }
 

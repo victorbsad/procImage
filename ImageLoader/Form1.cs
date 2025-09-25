@@ -13,7 +13,7 @@ namespace ImageLoader
 {
     public partial class Form1 : Form
     {
-
+        
         Bitmap img1;
         Bitmap img2;
         Bitmap img3;
@@ -42,6 +42,8 @@ namespace ImageLoader
         public Form1()
         {
             InitializeComponent();
+            txSumManual.Controls.RemoveAt(0);
+            txSubtManual.Controls.RemoveAt(0);
         }
 
         private void btCarregarImagem_Click(object sender, EventArgs e)
@@ -250,15 +252,6 @@ namespace ImageLoader
             pictureBox3.Refresh();
         }
 
-        private void btSomarManual_Click(object sender, EventArgs e)
-        {
-            if (vImg1R == null || vImg2R == null)
-            {
-                MessageBox.Show("Carregue as duas imagens primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
         private void btSubImg_Click(object sender, EventArgs e)
         {
             if (vImg1R == null || vImg2R == null)
@@ -270,6 +263,54 @@ namespace ImageLoader
             Subt2 subt = new Subt2();
 
             pictureBox3.Image = subt.subtImagens(vImg1R, vImg1G, vImg1B, vImg2R, vImg2G, vImg2B);
+            pictureBox3.Refresh();
+        }
+
+        private void btSomarManual_Click(object sender, EventArgs e)
+        {
+            if (vImg1R == null)
+            {
+                MessageBox.Show("Carregue uma imagem primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Brilho brilho = new Brilho();
+
+            if (int.TryParse(txSumManual.Text, out var brilhoInt))
+            {
+                brilho.brilhoImagem(vImg1R, vImg1G, vImg1B, brilhoInt);
+            } else
+            {
+                MessageBox.Show("Valor inválido para brilho.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            pictureBox3.Image = brilho.brilhoImagem(vImg1R, vImg1G, vImg1B, brilhoInt);
+            pictureBox3.Refresh();
+        }
+
+
+        private void btSubtManual_Click(object sender, EventArgs e)
+        {
+            if (vImg1R == null)
+            {
+                MessageBox.Show("Carregue uma imagem primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MenosBrilho menosBrilho = new MenosBrilho();
+
+            if (int.TryParse(txSubtManual.Text, out var menosBrilhoInt))
+            {
+                menosBrilho.menosBrilhoImagem(vImg1R, vImg1G, vImg1B, menosBrilhoInt);
+            }
+            else
+            {
+                MessageBox.Show("Valor inválido para brilho.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            pictureBox3.Image = menosBrilho.menosBrilhoImagem(vImg1R, vImg1G, vImg1B, menosBrilhoInt);
             pictureBox3.Refresh();
         }
     }
