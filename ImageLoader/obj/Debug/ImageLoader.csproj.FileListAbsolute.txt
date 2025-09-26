@@ -18,3 +18,13 @@ C:\Users\Pichau\Source\Repos\procImage\ImageLoader\obj\Debug\ImageLoader.csproj.
 C:\Users\Pichau\Source\Repos\procImage\ImageLoader\obj\Debug\ImageLoader.csproj.CoreCompileInputs.cache
 C:\Users\Pichau\Source\Repos\procImage\ImageLoader\obj\Debug\ImageLoader.exe
 C:\Users\Pichau\Source\Repos\procImage\ImageLoader\obj\Debug\ImageLoader.pdb
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\bin\Debug\ImageLoader.exe.config
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\bin\Debug\ImageLoader.exe
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\bin\Debug\ImageLoader.pdb
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.csproj.AssemblyReference.cache
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.Form1.resources
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.Properties.Resources.resources
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.csproj.GenerateResource.cache
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.csproj.CoreCompileInputs.cache
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.exe
+C:\Users\amand\Desktop\ProcessamentoImagens\ImageLoader\obj\Debug\ImageLoader.pdb
