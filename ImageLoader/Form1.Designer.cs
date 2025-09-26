@@ -45,12 +45,18 @@
             this.txSumManual = new System.Windows.Forms.NumericUpDown();
             this.txSubtManual = new System.Windows.Forms.NumericUpDown();
             this.btSubtManual = new System.Windows.Forms.Button();
+            this.btnMulti = new System.Windows.Forms.Button();
+            this.btnDiv = new System.Windows.Forms.Button();
+            this.txMulti = new System.Windows.Forms.NumericUpDown();
+            this.txDiv = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txSumManual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txSubtManual)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txMulti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txDiv)).BeginInit();
             this.SuspendLayout();
             // 
             // btCarregarImagem
@@ -184,11 +190,63 @@
             this.btSubtManual.UseVisualStyleBackColor = true;
             this.btSubtManual.Click += new System.EventHandler(this.btSubtManual_Click);
             // 
+            // btnMulti
+            // 
+            this.btnMulti.Location = new System.Drawing.Point(547, 156);
+            this.btnMulti.Name = "btnMulti";
+            this.btnMulti.Size = new System.Drawing.Size(86, 30);
+            this.btnMulti.TabIndex = 15;
+            this.btnMulti.Text = "MULTI";
+            this.btnMulti.UseVisualStyleBackColor = true;
+            this.btnMulti.Click += new System.EventHandler(this.btnMulti_Click);
+            // 
+            // btnDiv
+            // 
+            this.btnDiv.Location = new System.Drawing.Point(547, 192);
+            this.btnDiv.Name = "btnDiv";
+            this.btnDiv.Size = new System.Drawing.Size(86, 30);
+            this.btnDiv.TabIndex = 16;
+            this.btnDiv.Text = "DIVIS";
+            this.btnDiv.UseVisualStyleBackColor = true;
+            this.btnDiv.Click += new System.EventHandler(this.btnDiv_Click);
+            // 
+            // txMulti
+            // 
+            this.txMulti.DecimalPlaces = 2;
+            this.txMulti.Location = new System.Drawing.Point(639, 163);
+            this.txMulti.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.txMulti.Name = "txMulti";
+            this.txMulti.Size = new System.Drawing.Size(86, 20);
+            this.txMulti.TabIndex = 17;
+            this.txMulti.UseWaitCursor = true;
+            // 
+            // txDiv
+            // 
+            this.txDiv.DecimalPlaces = 2;
+            this.txDiv.Location = new System.Drawing.Point(639, 199);
+            this.txDiv.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.txDiv.Name = "txDiv";
+            this.txDiv.Size = new System.Drawing.Size(86, 20);
+            this.txDiv.TabIndex = 18;
+            this.txDiv.UseWaitCursor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1320, 584);
+            this.Controls.Add(this.txDiv);
+            this.Controls.Add(this.txMulti);
+            this.Controls.Add(this.btnDiv);
+            this.Controls.Add(this.btnMulti);
             this.Controls.Add(this.btSubtManual);
             this.Controls.Add(this.txSubtManual);
             this.Controls.Add(this.txSumManual);
@@ -209,6 +267,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txSumManual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txSubtManual)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txMulti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txDiv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,6 +291,10 @@
         private System.Windows.Forms.NumericUpDown txSumManual;
         private System.Windows.Forms.NumericUpDown txSubtManual;
         private System.Windows.Forms.Button btSubtManual;
+        private System.Windows.Forms.Button btnMulti;
+        private System.Windows.Forms.Button btnDiv;
+        private System.Windows.Forms.NumericUpDown txMulti;
+        private System.Windows.Forms.NumericUpDown txDiv;
     }
 }
 
