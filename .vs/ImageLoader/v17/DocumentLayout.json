@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|solutionrelative:imageloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|C:\\Users\\Pichau\\source\\repos\\procImage\\imageloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|solutionrelative:imageloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|C:\\Users\\Pichau\\source\\repos\\procImage\\imageloader\\soma2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|solutionrelative:imageloader\\soma2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pichau\\source\\repos\\procImage\\ImageLoader\\Soma2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ImageLoader\\Soma2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|C:\\Users\\Pichau\\source\\repos\\procImage\\imageloader\\subt2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|solutionrelative:imageloader\\subt2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|C:\\Users\\Pichau\\source\\repos\\procImage\\imageloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7FF2607-6CDE-4FB1-A04B-0D712E10CD76}|ImageLoader\\ImageLoader.csproj|solutionrelative:imageloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,20 +46,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Soma2.cs",
               "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\procImage\\ImageLoader\\Soma2.cs",
               "RelativeDocumentMoniker": "ImageLoader\\Soma2.cs",
               "ToolTip": "C:\\Users\\Pichau\\source\\repos\\procImage\\ImageLoader\\Soma2.cs",
               "RelativeToolTip": "ImageLoader\\Soma2.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAqwBMAAAA1AAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-27T14:25:52.683Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Subt2.cs",
               "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\procImage\\ImageLoader\\Subt2.cs",
               "RelativeDocumentMoniker": "ImageLoader\\Subt2.cs",
@@ -67,7 +67,8 @@
               "RelativeToolTip": "ImageLoader\\Subt2.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAAADEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T14:25:24.038Z"
+              "WhenOpened": "2025-09-27T14:25:24.038Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -77,14 +78,14 @@
               "RelativeDocumentMoniker": "ImageLoader\\Form1.cs",
               "ToolTip": "C:\\Users\\Pichau\\source\\repos\\procImage\\ImageLoader\\Form1.cs",
               "RelativeToolTip": "ImageLoader\\Form1.cs",
-              "ViewState": "AQIAAGEDAAAAAAAAAAAUwHgDAAAbAAAA",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAwwMwAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-25T01:43:43.018Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\procImage\\ImageLoader\\Form1.cs",
               "RelativeDocumentMoniker": "ImageLoader\\Form1.cs",
