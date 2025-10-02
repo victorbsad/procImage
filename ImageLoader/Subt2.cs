@@ -16,11 +16,11 @@ namespace ImageLoader
             int width = Math.Min(vImg1R.GetLength(0), vImg2R.GetLength(0));
             int height = Math.Min(vImg1R.GetLength(1), vImg2R.GetLength(1));
 
-            byte[,] vImg4R = new byte[width, height];
-            byte[,] vImg4G = new byte[width, height];
-            byte[,] vImg4B = new byte[width, height];
+            byte[,] vImg3R = new byte[width, height];
+            byte[,] vImg3G = new byte[width, height];
+            byte[,] vImg3B = new byte[width, height];
 
-            Bitmap img4 = new Bitmap(width, height);
+            Bitmap img3 = new Bitmap(width, height);
 
             for (int i = 0; i < width; i++)
             {
@@ -30,21 +30,22 @@ namespace ImageLoader
                     int g = vImg1G[i, j] - vImg2G[i, j];
                     int b = vImg1B[i, j] - vImg2B[i, j];
 
-                    vImg4R[i, j] = (byte)(r > 255 ? 255 : r);
-                    vImg4G[i, j] = (byte)(g > 255 ? 255 : g);
-                    vImg4B[i, j] = (byte)(b > 255 ? 255 : b);
+                    vImg3R[i, j] = (byte)(r > 255 ? 255 : r);
+                    vImg3G[i, j] = (byte)(g > 255 ? 255 : g);
+                    vImg3B[i, j] = (byte)(b > 255 ? 255 : b);
 
                     Color cor = Color.FromArgb(
                         255,
-                        vImg4R[i, j],
-                        vImg4G[i, j],
-                        vImg4B[i, j]);
+                        vImg3R[i, j],
+                        vImg3G[i, j],
+                        vImg3B[i, j]);
 
-                    img4.SetPixel(i, j, cor);
+                    img3.SetPixel(i, j, cor);
                 }
             }
 
-            return img4;
+            return img3;
         }
+
     }
 }
