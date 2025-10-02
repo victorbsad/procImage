@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Linq;
 
 namespace ImageLoader
 {
@@ -66,8 +67,8 @@ namespace ImageLoader
                 bool bLoadImg1Ok = false;
                 try
                 {
+                    img1 = new Bitmap(filePath);
                     bLoadImg1Ok = true;
-                    bLoadImgOK = true;
                 }
                 catch (Exception ex)
                 {
@@ -84,45 +85,43 @@ namespace ImageLoader
                     vImg1G = new byte[img1.Width, img1.Height];
                     vImg1B = new byte[img1.Width, img1.Height];
                     vImg1A = new byte[img1.Width, img1.Height];
+
                 }
             }
         }
-                }
+    
         private void btSalvarImagem_Click(object sender, EventArgs e)
         {
-            if (pictureBox3.Image == null)
-                return;
-
-            // Configurações iniciais da saveFileDialog1
-            var filePath = string.Empty;
-            saveFileDialog1.InitialDirectory = "C:\\Users\\amand\\Desktop";
-            saveFileDialog1.Filter = "TIFF image (*.tif)|*.tif|JPG image (*.jpg)|*.jpg|BMP image (*.bmp)|*.bmp|PNG image (*.png)|*.png|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-
-            ImageFormat format = pictureBox3.Image.RawFormat;
-
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (pictureBox1.Image != null)
             {
-                string ext = System.IO.Path.GetExtension(saveFileDialog1.FileName);
-                switch (ext)
-                {
-                    case ".jpg":
-                        format = ImageFormat.Jpeg;
-                        break;
-                    case ".bmp":
-                        format = ImageFormat.Bmp;
-                        break;
-                    case ".tif":
-                        format = ImageFormat.Tiff;
-                        break;
-                    case ".png":
-                        format = ImageFormat.Png;
-                        break;
-                }
+                // Cria e configura o SaveFileDialog
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = "C:\\Matlab"; // Diretório inicial
+                saveFileDialog.Filter = "PNG Image (*.png)|*.png|JPEG Image (*.jpg)|*.jpg|Bitmap Image (*.bmp)|*.bmp|TIFF Image (*.tif)|*.tif";
+                saveFileDialog.FilterIndex = 1; // Define o filtro padrão para PNG
+                saveFileDialog.RestoreDirectory = true;
 
-                pictureBox3.Image.Save(saveFileDialog1.FileName, format);
+                // Exibe a caixa de diálogo para o usuário
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Salva a imagem no caminho especificado pelo usuário
+                        pictureBox1.Image.Save(saveFileDialog.FileName);
+                        MessageBox.Show("Imagem salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Mostra uma mensagem de erro se algo der errado
+                        MessageBox.Show("Erro ao salvar imagem: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
+            else
+            {
+                MessageBox.Show("Não há imagem para salvar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
 
@@ -169,16 +168,47 @@ namespace ImageLoader
 
         private void btSomarImg_Click(object sender, EventArgs e)
         {
-            if (vImg1R == null || vImg2R == null)
+            //valida se as 2 imagens estão carregadas
+            if (img1 != null && img2 != null)
             {
-                MessageBox.Show("Carregue as duas imagens primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-                            Color pixel = img2.GetPixel(i, j);
-            Soma2 sum = new Soma2();
 
-            pictureBox3.Image = sum.somaImagens(vImg1R, vImg1G, vImg1B, vImg2R, vImg2G, vImg2B);
-            pictureBox3.Refresh();
+                // Garante que as imagens tenham o mesmo tamanho
+                if (img1.Width != img2.Width || img1.Height != img2.Height)
+                {
+                    MessageBox.Show("As imagens devem ter o mesmo tamanho.", "Atenção");
+                    return;
+                }
+
+                Bitmap Soma = new Bitmap(img1.Width, img1.Height);
+
+                for (int i = 0; i < img1.Width; i++)
+                {
+                    for (int j = 0; j < img1.Height; j++)
+                    {
+                        // obtem os pixels da imagem1 e imagem2
+                        Color pixel1 = img1.GetPixel(i, j);
+                        Color pixel2 = img2.GetPixel(i, j);
+
+                        //calcula a soma dos valores dos pixels
+                        byte R = (byte)Math.Min(pixel1.R + pixel2.R, 255);
+                        byte G = (byte)Math.Min(pixel1.G + pixel2.G, 255);
+                        byte B = (byte)Math.Min(pixel1.B + pixel2.B, 255);
+                        byte A = 255;
+
+                        //Define o pixel na nova imagem
+                        Color cor = Color.FromArgb(A, R, G, B);
+                        Soma.SetPixel(i, j, cor);
+                    }
+                }
+
+                //Atualiza imagem do resultado com as imagens somadas
+                pictureBox3.Image = Soma;
+
+            }
+            else
+            {
+                MessageBox.Show("As imagens 1 e 2 devem ser carregadas antes de somar", "Atenção");
+            }
         }
 
         private void btSubImg_Click(object sender, EventArgs e)
@@ -474,56 +504,56 @@ namespace ImageLoader
 
         private void btDiff_Click(object sender, EventArgs e)
         {
-            if (img1 != null && img2 != null)
+        if (img1 != null && img2 != null)
+        {
+            if (img1.Width != img2.Width || img1.Height != img2.Height)
             {
-                if (img1.Width != img2.Width || img1.Height != img2.Height)
-                {
-                    MessageBox.Show("A imagem 1 e a imagem 2 devem ter o mesmo tamanho para ser calculada a diferença", "Aviso");
-                    return;
-                }
-
-                Bitmap imgAux1 = new Bitmap(img1.Width, img1.Height);
-                Bitmap imgAux2 = new Bitmap(img1.Width, img1.Height);
-                Bitmap imgFinal = new Bitmap(img1.Width, img1.Height);
-
-                for (int i = 0; i < img1.Width; i++)
-                {
-                    for (int j = 0; j < img1.Height; j++)
-                    {
-                        Color pixel1 = img1.GetPixel(i, j);
-                        Color pixel2 = img2.GetPixel(i, j);
-
-                        byte R_C = (byte)Math.Max(pixel1.R - pixel2.R, 0);
-                        byte G_C = (byte)Math.Max(pixel1.G - pixel2.G, 0);
-                        byte B_C = (byte)Math.Max(pixel1.B - pixel2.B, 0);
-                        imgAux1.SetPixel(i, j, Color.FromArgb(255, R_C, G_C, B_C));
-                                vImg2B[i, j]);
-                        byte R_D = (byte)Math.Max(pixel2.R - pixel1.R, 0);
-                        byte G_D = (byte)Math.Max(pixel2.G - pixel1.G, 0);
-                        byte B_D = (byte)Math.Max(pixel2.B - pixel1.B, 0);
-                        imgAux2.SetPixel(i, j, Color.FromArgb(255, R_D, G_D, B_D));
-                    }
-                }
-                for (int i = 0; i < img1.Width; i++)
-                {
-                    for (int j = 0; j < img1.Height; j++)
-                    {
-                        Color pixel3 = imgAux1.GetPixel(i, j);
-                        Color pixel4 = imgAux2.GetPixel(i, j);
-                    }
-                        byte R = (byte)Math.Min(pixel3.R + pixel4.R, 255);
-                        byte G = (byte)Math.Min(pixel3.G + pixel4.G, 255);
-                        byte B = (byte)Math.Min(pixel3.B + pixel4.B, 255);
-                        imgFinal.SetPixel(i, j, Color.FromArgb(255, R, G, B));
-                    }
-                }
-
-                pictureBox3.Image = imgFinal;
+                MessageBox.Show("A imagem 1 e a imagem 2 devem ter o mesmo tamanho para ser calculada a diferença", "Atenção");
+                return;
             }
-            else
+
+            Bitmap imgAux1 = new Bitmap(img1.Width, img1.Height);
+            Bitmap imgAux2 = new Bitmap(img1.Width, img1.Height);
+            Bitmap imgResultFinal = new Bitmap(img1.Width, img1.Height);
+
+            for (int i = 0; i < img1.Width; i++)
             {
-                MessageBox.Show("Duas imagens devem ser inseridas antes de calcular a diferença", "Aviso");
+                for (int j = 0; j < img1.Height; j++)
+                {
+                    Color pixel1 = img1.GetPixel(i, j);
+                    Color pixel2 = img2.GetPixel(i, j);
+
+                    byte R_CalcC = (byte)Math.Max(pixel1.R - pixel2.R, 0);
+                    byte G_CalcC = (byte)Math.Max(pixel1.G - pixel2.G, 0);
+                    byte B_CalcC = (byte)Math.Max(pixel1.B - pixel2.B, 0);
+                    imgAux1.SetPixel(i, j, Color.FromArgb(255, R_CalcC, G_CalcC, B_CalcC));
+
+                    byte R_CalcD = (byte)Math.Max(pixel2.R - pixel1.R, 0);
+                    byte G_CalcD = (byte)Math.Max(pixel2.G - pixel1.G, 0);
+                    byte B_CalcD = (byte)Math.Max(pixel2.B - pixel1.B, 0);
+                    imgAux2.SetPixel(i, j, Color.FromArgb(255, R_CalcD, G_CalcD, B_CalcD));
+                }
             }
+            for (int i = 0; i < img1.Width; i++)
+            {
+                for (int j = 0; j < img1.Height; j++)
+                {
+                    Color pixel3 = imgAux1.GetPixel(i, j);
+                    Color pixel4 = imgAux2.GetPixel(i, j);
+
+                    byte R = (byte)Math.Min(pixel3.R + pixel4.R, 255);
+                    byte G = (byte)Math.Min(pixel3.G + pixel4.G, 255);
+                    byte B = (byte)Math.Min(pixel3.B + pixel4.B, 255);
+                    imgResultFinal.SetPixel(i, j, Color.FromArgb(255, R, G, B));
+                }
+            }
+
+                pictureBox3.Image = imgResultFinal;
+        }
+        else
+        {
+            MessageBox.Show("A imagem 1 e a imagem 2 devem ser inseridas antes de calcular a diferença", "Atenção");
+        }
         }
 
         private void btBlend_Click(object sender, EventArgs e)
@@ -538,7 +568,7 @@ namespace ImageLoader
                     MessageBox.Show("Digite um valor numérico válido.");
                     return;
                 }
-        }
+            
                 Bitmap blending = new Bitmap(img1.Width, img1.Height);
 
                 for (int i = 0; i < img1.Width; i++)
@@ -565,8 +595,9 @@ namespace ImageLoader
                 return;
                 return;
             }
-
         }
+    
+
         private void btLinear_Click(object sender, EventArgs e)
         {
             if (img1 != null)
@@ -727,7 +758,6 @@ namespace ImageLoader
                 pictureBox3.Image = btXOR;
             }
             else
-            } else
             {
                 MessageBox.Show("Carregue uma imagem primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -914,54 +944,5 @@ namespace ImageLoader
             }
 
         }
-
-        private void btnMulti_Click(object sender, EventArgs e)
-        {
-           //t
-        }
-
-        private void btnDiv_Click(object sender, EventArgs e)
-        {
-            //t
-        }
-
-        private void btSalvarImagem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox3.Image == null)
-                return;
-
-            // Configurações iniciais da saveFileDialog1
-            var filePath = string.Empty;
-            saveFileDialog1.InitialDirectory = "C:\\Users\\amand\\Desktop";
-            saveFileDialog1.Filter = "TIFF image (*.tif)|*.tif|JPG image (*.jpg)|*.jpg|BMP image (*.bmp)|*.bmp|PNG image (*.png)|*.png|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-
-            ImageFormat format = pictureBox3.Image.RawFormat;
-
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string ext = System.IO.Path.GetExtension(saveFileDialog1.FileName);
-                switch (ext)
-                {
-                    case ".jpg":
-                        format = ImageFormat.Jpeg;
-                        break;
-                    case ".bmp":
-                        format = ImageFormat.Bmp;
-                        break;
-                    case ".tif":
-                        format = ImageFormat.Tiff;
-                        break;
-                    case ".png":
-                        format = ImageFormat.Png;
-                        break;
-                }
-
-                pictureBox3.Image.Save(saveFileDialog1.FileName, format);
-            }
-        }
-
-        
     }
 }
